@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">OnurPT</string>
+    <string name="FACEBOOK_APP_ID">772939716226203</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">fee563a75d3c8ee5e7c2463e12e596fa</string>
+    <string name="name_hint">Name and Surname</string>
+    <string name="mail_hint">Enter your Mail</string>
+    <string name="strRegister">REGISTER</string>
+    <string name="lorem">sdsadsadsadsadsadsadasdsadsada
+    dsadsaddsadsadsadsadsadsadasdsadsadasdasdsadsad
+    sadsadsadsadasdsadsad
+    sasaadsadsadasdsa</string>
+    <string name="menu_add">Add To Program</string>
+    <string name="appointmentStr">Make Appointment</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="eventStr">sdasdsadasdsadsadsadadasdasdas</string>
+</resources>
