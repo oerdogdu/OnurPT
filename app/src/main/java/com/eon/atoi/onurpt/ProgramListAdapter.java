@@ -61,6 +61,13 @@ public class ProgramListAdapter extends BaseAdapter {
         reps.setText(workout.getReps());
         thumbnail.setImageResource(Integer.valueOf(workout.getThumbnail()));
 
+        thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         return vi;
     }
 }

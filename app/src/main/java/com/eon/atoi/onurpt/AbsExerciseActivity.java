@@ -47,12 +47,12 @@ public class AbsExerciseActivity extends Activity {
     }
 
     private void prepareList() {
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.chest)));
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.sit_up_02)));
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Crunches", "15x", String.valueOf(R.drawable.sit_up_01)));
+        absWorkoutList.add(new Workout("Crunches", "00:30", String.valueOf(R.drawable.chest)));
+        absWorkoutList.add(new Workout("Sit Up", "00:30", String.valueOf(R.drawable.sit_up_02)));
+        absWorkoutList.add(new Workout("Plank", "00:30", String.valueOf(R.drawable.plank)));
+        absWorkoutList.add(new Workout("Side Lunges", "00:30", String.valueOf(R.drawable.side_lunges)));
+        absWorkoutList.add(new Workout("Side Plank", "00:30", String.valueOf(R.drawable.side_plank)));
+        absWorkoutList.add(new Workout("Sit Up2", "00:30", String.valueOf(R.drawable.sit_up_01)));
     }
 
 

@@ -36,7 +36,5 @@ public class ProgramActivity extends Activity {
     private synchronized void prepareList() {
         WorkoutDatabaseHelper workoutDatabaseHelper = WorkoutDatabaseHelper.getInstance(this);
         list = workoutDatabaseHelper.getAllWorkouts();
-
-        Toast.makeText(this, list.size()+"", Toast.LENGTH_LONG).show();
     }
 }
