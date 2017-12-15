@@ -1,10 +1,14 @@
 package com.eon.atoi.onurpt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,7 +31,15 @@ public class ProgramActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.program_activity);
 
-        programList = (ListView)findViewById(R.id.programList);
+        programList = (ListView)findViewById(R.id.program_list);
+        programList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("click", "clicked");
+                Intent intent = new Intent(getBaseContext(), WorkoutDetailActivity.class);
+                startActivity(intent);
+            }
+        });
         prepareList();
         ProgramListAdapter adapter = new ProgramListAdapter(this, list);
         programList.setAdapter(adapter);

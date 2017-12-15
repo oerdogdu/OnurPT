@@ -9,9 +9,8 @@ public class Workout {
     private String thumbnail;
     private String set, reps;
 
-    public Workout(String workoutName, String description, String thumbnail) {
+    public Workout(String workoutName, String thumbnail) {
         this.workoutName = workoutName;
-        this.description = description;
         this.thumbnail = thumbnail;
     }
 

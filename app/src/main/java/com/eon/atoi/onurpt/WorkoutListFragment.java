@@ -3,16 +3,13 @@ package com.eon.atoi.onurpt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Atoi on 2.12.2017.
@@ -43,12 +40,12 @@ public class WorkoutListFragment extends Fragment {
     }
 
     private void prepareList() {
-        data.put("Shoulder", R.drawable.shoulder_exercise);
-        data.put("Chest", R.drawable.chest_exercise);
-        data.put("Biceps - Triceps - Arm", R.drawable.shoulder_exercise);
-        data.put("Cardio", R.drawable.chest_exercise);
-        data.put("Abs", R.drawable.chest_exercise);
-        data.put("Leg", R.drawable.shoulder_exercise);
+        data.put("Shoulder", R.drawable.chest_icon);
+        data.put("Chest", R.drawable.chest_icon);
+        data.put("Biceps - Triceps - Arm", R.drawable.chest_icon);
+        data.put("Cardio", R.drawable.chest_icon);
+        data.put("Abs", R.drawable.chest_icon);
+        data.put("Leg", R.drawable.chest_icon);
     }
 
     @Override
@@ -65,7 +62,10 @@ public class WorkoutListFragment extends Fragment {
                 switch (position)
                 {
                     case 0:
-                        Intent intent = new Intent(getActivity(), AbsExerciseActivity.class);
+                        Intent intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", "abs");
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         break;
 

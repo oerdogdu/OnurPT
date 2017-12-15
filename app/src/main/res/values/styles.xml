@@ -10,7 +10,7 @@
 
     <style name="AppLoginTheme" parent="Theme.AccountKit" />
 
-    <style name="StyledIndicators" parent="@android:style/Theme.Light">
+    <style name="StyledIndicators" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
     </style>
 

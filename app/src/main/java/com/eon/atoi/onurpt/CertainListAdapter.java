@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Atoi on 4.12.2017.
  */
 
-public class AbsListAdapter extends RecyclerView.Adapter<AbsListAdapter.MyViewHolder> implements PopupMenu.OnMenuItemClickListener {
+public class CertainListAdapter extends RecyclerView.Adapter<CertainListAdapter.MyViewHolder> implements PopupMenu.OnMenuItemClickListener {
 
     private Context mContext;
     private List<Workout> absWorkoutList;
@@ -67,6 +67,7 @@ public class AbsListAdapter extends RecyclerView.Adapter<AbsListAdapter.MyViewHo
                 {
                     if(workoutProgram != null){
                         workoutProgram.setSet(set);
+                        workoutProgram.setReps(reps);
                         WorkoutDatabaseHelper workoutDatabaseHelper = WorkoutDatabaseHelper.getInstance(mContext);
                         workoutDatabaseHelper.addWorkout(workoutProgram);
                         //Toast.makeText(mContext, "Workout Added", Toast.LENGTH_SHORT);
@@ -99,13 +100,12 @@ public class AbsListAdapter extends RecyclerView.Adapter<AbsListAdapter.MyViewHo
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-            description = (TextView) view.findViewById(R.id.description);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             plusSign = (ImageView) view.findViewById(R.id.plus_item);
         }
     }
 
-    public AbsListAdapter(Context mContext, List<Workout> absWorkoutList) {
+    public CertainListAdapter(Context mContext, List<Workout> absWorkoutList) {
         this.mContext = mContext;
         this.absWorkoutList = absWorkoutList;
     }
@@ -119,10 +119,9 @@ public class AbsListAdapter extends RecyclerView.Adapter<AbsListAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Workout workout = absWorkoutList.get(position);
         holder.title.setText(workout.getWorkoutName());
-        holder.description.setText(workout.getDescription());
         holder.thumbnail.setImageResource(Integer.valueOf(workout.getThumbnail()));
 
         holder.plusSign.setOnClickListener(new View.OnClickListener() {
@@ -141,10 +140,10 @@ public class AbsListAdapter extends RecyclerView.Adapter<AbsListAdapter.MyViewHo
                 dialog.setTitle("Exercise Detail");
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.btn_ok);
-
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         dialog.dismiss();
                     }
                 });

@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary">
 
-    <com.github.omadahealth.circularbarpager.library.CircularBarPager
-        android:id="@+id/circularBarPager"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
+    <LinearLayout
+        android:id="@+id/lytContainerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:layout_centerInParent="true"
-        style="@style/CircularBarPager_Default"/>
+        android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <com.github.omadahealth.circularbarpager.library.CircularBarPager
+            android:id="@+id/circularBarPager"
+            android:layout_height="320dp"
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            style="@style/CircularBarPager_Default"/>
+    </FrameLayout>
+
+    </LinearLayout>
+
+    <com.github.lzyzsd.circleprogress.CircleProgress
+        android:id="@+id/prgLoading"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

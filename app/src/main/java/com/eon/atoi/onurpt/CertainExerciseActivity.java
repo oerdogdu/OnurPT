@@ -20,10 +20,10 @@ import java.util.List;
  * Created by Atoi on 2.12.2017.
  */
 
-public class AbsExerciseActivity extends Activity {
+public class CertainExerciseActivity extends Activity {
 
     private RecyclerView myRecycleView;
-    private AbsListAdapter absListAdapter;
+    private CertainListAdapter certainListAdapter;
     private List<Workout> absWorkoutList;
 
     @Override
@@ -35,24 +35,28 @@ public class AbsExerciseActivity extends Activity {
 
         myRecycleView = (RecyclerView)findViewById(R.id.recycler_abs);
         absWorkoutList = new ArrayList<>();
-        absListAdapter = new AbsListAdapter(AbsExerciseActivity.this, absWorkoutList);
+        certainListAdapter = new CertainListAdapter(CertainExerciseActivity.this, absWorkoutList);
         myRecycleView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         myRecycleView.setItemAnimator(new DefaultItemAnimator());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         myRecycleView.setLayoutManager(mLayoutManager);
-        myRecycleView.setAdapter(absListAdapter);
+        myRecycleView.setAdapter(certainListAdapter);
 
-        prepareList();
-        absListAdapter.notifyDataSetChanged();
+        Bundle b = getIntent().getExtras();
+
+        if(b.getString("type").equalsIgnoreCase("abs")) {
+            prepareListAbs();
+            certainListAdapter.notifyDataSetChanged();
+        }
     }
 
-    private void prepareList() {
-        absWorkoutList.add(new Workout("Crunches", "00:30", String.valueOf(R.drawable.chest)));
-        absWorkoutList.add(new Workout("Sit Up", "00:30", String.valueOf(R.drawable.sit_up_02)));
-        absWorkoutList.add(new Workout("Plank", "00:30", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", "00:30", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", "00:30", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", "00:30", String.valueOf(R.drawable.sit_up_01)));
+    private void prepareListAbs() {
+        absWorkoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
+        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
+        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
     }
 
 

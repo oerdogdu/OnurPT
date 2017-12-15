@@ -2,6 +2,7 @@ package com.eon.atoi.onurpt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,6 @@ public class ProgramListAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.program_list_row, null);
 
         TextView title = (TextView)vi.findViewById(R.id.program_title);
-        TextView description = (TextView)vi.findViewById(R.id.program_description);
         ImageView thumbnail = (ImageView) vi.findViewById(R.id.program_image);
         TextView set = (TextView)vi.findViewById(R.id.program_set);
         TextView reps = (TextView)vi.findViewById(R.id.program_reps);
@@ -56,17 +56,9 @@ public class ProgramListAdapter extends BaseAdapter {
         Workout workout = getItem(position);
 
         title.setText(workout.getWorkoutName());
-        description.setText(workout.getDescription());
-        set.setText(workout.getSet());
-        reps.setText(workout.getReps());
+        set.setText("Set: " + workout.getSet());
+        reps.setText("Rep: " + workout.getReps());
         thumbnail.setImageResource(Integer.valueOf(workout.getThumbnail()));
-
-        thumbnail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return vi;
     }

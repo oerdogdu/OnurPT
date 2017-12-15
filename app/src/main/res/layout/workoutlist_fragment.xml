@@ -19,8 +19,8 @@
     <ListView
         android:id="@+id/workoutList"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:divider="#000"
+        android:layout_height="match_parent"
+        android:divider="#fff"
         android:dividerHeight="1dp"/>
 
     <FrameLayout

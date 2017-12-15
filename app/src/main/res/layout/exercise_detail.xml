@@ -16,8 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"
         android:textSize="25sp"
-        android:text="Muscle Groups:  \n- ABS\n- LEGS"/>
+        android:text="  Muscle Groups:  \n - ABS\n - LEGS"/>
 
     <Button
         android:id="@+id/btn_ok"
