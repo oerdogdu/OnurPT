@@ -40,12 +40,12 @@ public class WorkoutListFragment extends Fragment {
     }
 
     private void prepareList() {
-        data.put("Shoulder", R.drawable.chest_icon);
+        data.put("Shoulder", R.drawable.shoulder_icon);
         data.put("Chest", R.drawable.chest_icon);
-        data.put("Biceps - Triceps - Arm", R.drawable.chest_icon);
-        data.put("Cardio", R.drawable.chest_icon);
-        data.put("Abs", R.drawable.chest_icon);
-        data.put("Leg", R.drawable.chest_icon);
+        data.put("Biceps - Triceps", R.drawable.biceps_icon);
+        data.put("Cardio", R.drawable.cardio_icon);
+        data.put("Abs", R.drawable.abs_icon);
+        data.put("Leg", R.drawable.leg_icon);
     }
 
     @Override
@@ -59,16 +59,47 @@ public class WorkoutListFragment extends Fragment {
         workoutList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                Bundle bundle = new Bundle();
+
                 switch (position)
                 {
                     case 0:
-                        Intent intent = new Intent(getActivity(), CertainExerciseActivity.class);
-                        Bundle bundle = new Bundle();
                         bundle.putString("type", "abs");
                         intent.putExtras(bundle);
                         startActivity(intent);
                         break;
-
+                    case 1:
+                        intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        bundle.putString("type", "shoulder");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        bundle.putString("type", "leg");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        bundle.putString("type", "cardio");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        bundle.putString("type", "biceps");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    case 5:
+                        intent = new Intent(getActivity(), CertainExerciseActivity.class);
+                        bundle.putString("type", "chest");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
                     default:
                         break;
                 }

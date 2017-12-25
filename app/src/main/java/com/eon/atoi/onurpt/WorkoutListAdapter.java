@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Atoi on 2.12.2017.
  */
@@ -45,11 +47,11 @@ public class WorkoutListAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
-        if(convertView==null)
+        if(convertView == null)
             vi = inflater.inflate(R.layout.workout_list_row, null);
 
         TextView title = (TextView)vi.findViewById(R.id.workout_title);
-        ImageView thumb_image = (ImageView)vi.findViewById(R.id.workout_image);
+        ImageView thumb_image = (ImageView) vi.findViewById(R.id.workout_image);
 
         Map.Entry<String, Integer> workoutSingle = getItem(position);
 

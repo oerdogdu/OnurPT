@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="330dp"
@@ -18,11 +19,22 @@
             android:layout_alignParentLeft="true"
             android:layout_marginRight="5dip">
 
-            <ImageView
-                android:id="@+id/workout_image"
-                android:layout_width="60dip"
-                android:layout_height="60dip"
-                android:background="#fff" />
+            <android.support.v7.widget.CardView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:elevation="12dp"
+                android:id="@+id/view2"
+                app:cardCornerRadius="20dp"
+                android:layout_centerHorizontal="true"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:thicknessRatio="1.9">
+                <ImageView
+                    android:layout_height="60dp"
+                    android:layout_width="60dp"
+                    android:id="@+id/workout_image">
+                </ImageView>
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
@@ -30,21 +42,17 @@
             android:id="@+id/workout_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/thumbnail"
             android:layout_toRightOf="@+id/thumbnail"
             android:layout_centerVertical="true"
             android:text="Rihanna Love the way lie"
             android:textColor="#fff"
-            android:textSize="15dip"
+            android:textSize="13dip"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
             android:textStyle="bold"
+            android:layout_marginStart="12dp"
             android:typeface="sans" />
 
-        <ImageView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_label_white_24dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="5dp"
-            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 

@@ -23,3 +23,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.daimajia.easing.** { *; }
+-keep interface com.daimajia.easing.** { *; }
+
+-keepclassmembers public class * extends com.daimajia.easing.BaseEasingMethod {
+    public <init>(...);
+}
