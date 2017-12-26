@@ -28,7 +28,7 @@ public class CertainExerciseActivity extends Activity {
 
     private RecyclerView myRecycleView;
     private CertainListAdapter certainListAdapter;
-    private List<Workout> absWorkoutList;
+    private List<Workout> workoutList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +38,8 @@ public class CertainExerciseActivity extends Activity {
         setContentView(R.layout.abs_exercise);
 
         myRecycleView = (RecyclerView)findViewById(R.id.recycler_abs);
-        absWorkoutList = new ArrayList<>();
-        certainListAdapter = new CertainListAdapter(CertainExerciseActivity.this, absWorkoutList);
+        workoutList = new ArrayList<>();
+        certainListAdapter = new CertainListAdapter(CertainExerciseActivity.this, workoutList);
         myRecycleView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         myRecycleView.setItemAnimator(new DefaultItemAnimator());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
@@ -80,59 +80,59 @@ public class CertainExerciseActivity extends Activity {
     }
 
     private void PrepareChest() {
-        absWorkoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
     }
 
     private void PrepareBiceps() {
-        absWorkoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
     }
 
     private void PrepareCardio() {
-        absWorkoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
 
     }
 
     private void PrepareLeg() {
-        absWorkoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Curl", String.valueOf(R.drawable.altarnate_bicep_curl)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.arnold_press)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
     }
 
     private void PrepareShoulder() {
-        absWorkoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
 
     }
 
     private void PrepareListAbs() {
-        absWorkoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
-        absWorkoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
-        absWorkoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
-        absWorkoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
-        absWorkoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
-        absWorkoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
+        workoutList.add(new Workout("Crunches", String.valueOf(R.drawable.chest)));
+        workoutList.add(new Workout("Sit Up", String.valueOf(R.drawable.sit_up_02)));
+        workoutList.add(new Workout("Plank", String.valueOf(R.drawable.plank)));
+        workoutList.add(new Workout("Side Lunges", String.valueOf(R.drawable.side_lunges)));
+        workoutList.add(new Workout("Side Plank", String.valueOf(R.drawable.side_plank)));
+        workoutList.add(new Workout("Sit Up2", String.valueOf(R.drawable.sit_up_01)));
     }
 
 
