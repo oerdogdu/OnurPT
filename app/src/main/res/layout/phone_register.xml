@@ -23,7 +23,8 @@
             <EditText android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name_hint" />
+                android:hint="@string/name_hint"
+                android:textColor="#fff"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -37,7 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="@string/mail_hint"/>
+                android:hint="@string/mail_hint"
+                android:textColor="#fff"/>
+
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton

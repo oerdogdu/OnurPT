@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.eon.atoi.onurpt.activities.MainActivity;
 import com.eon.atoi.onurpt.R;
@@ -43,8 +44,7 @@ public class PhoneRegister extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToMyLoggedInActivity();
-                //onSMSLoginFlow(v);
+                onSMSLoginFlow(v);
             }
         });
     }
@@ -73,28 +73,24 @@ public class PhoneRegister extends Activity {
                 toastMessage = loginResult.getError().getErrorType().getMessage();
             } else {
                 if (loginResult.getAccessToken() != null) {
+
+                    String name = etName.getText().toString();
+                    String email = etMail.getText().toString();
+
+                    if((TextUtils.isEmpty(name) || name == null)  || (TextUtils.isEmpty(email) || email == null))
+                    {
+                        Toast.makeText(this, "Fill in all areas!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+                        saveToDatabase(name, email);
+                        goToMyLoggedInActivity();
+                    }
                     toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
                 } else {
-                    toastMessage = String.format(
-                            "Success:%s...",
-                            loginResult.getAuthorizationCode().substring(0, 10));
+                    Toast.makeText(this, "Error while registering!", Toast.LENGTH_SHORT).show();  
                 }
 
-                String name = etName.getText().toString();
-                String email = etMail.getText().toString();
-
-                if(TextUtils.isEmpty(name))
-                {
-                    name = "default";
-                }
-
-                if(TextUtils.isEmpty(email))
-                {
-                    email = "default";
-                }
-
-                saveToDatabase(name, email);
-                goToMyLoggedInActivity();
             }
         }
     }
