@@ -5,10 +5,9 @@
     <string name="name_hint">Name and Surname</string>
     <string name="mail_hint">Enter your Mail</string>
     <string name="strRegister">REGISTER</string>
-    <string name="lorem">sdsadsadsadsadsadsadasdsadsada
-    dsadsaddsadsadsadsadsadsadasdsadsadasdasdsadsad
-    sadsadsadsadasdsadsad
-    sasaadsadsadasdsa</string>
+    <string name="lorem">Onur Turgut
+        MACFit'te Personal Coach
+        Anadolu Üniversitesi'de Uluslararası ilişkiler okudu</string>
     <string name="menu_add">Add To Program</string>
     <string name="appointmentStr">Make Appointment</string>
     <string name="OK">OK</string>
