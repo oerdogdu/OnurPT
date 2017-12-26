@@ -72,26 +72,19 @@ public class PhoneRegister extends Activity {
             if (loginResult.getError() != null) {
                 toastMessage = loginResult.getError().getErrorType().getMessage();
             } else {
-                if (loginResult.getAccessToken() != null) {
 
-                    String name = etName.getText().toString();
-                    String email = etMail.getText().toString();
+                String name = etName.getText().toString();
+                String email = etMail.getText().toString();
 
-                    if((TextUtils.isEmpty(name) || name == null)  || (TextUtils.isEmpty(email) || email == null))
-                    {
-                        Toast.makeText(this, "Fill in all areas!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
-                        saveToDatabase(name, email);
-                        goToMyLoggedInActivity();
-                    }
-                    toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
+                if ((TextUtils.isEmpty(name) || name == null) || (TextUtils.isEmpty(email) || email == null)) {
+                    Toast.makeText(this, "Fill in all areas!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Error while registering!", Toast.LENGTH_SHORT).show();  
+                    saveToDatabase(name, email);
+                    goToMyLoggedInActivity();
                 }
 
             }
+
         }
     }
 
