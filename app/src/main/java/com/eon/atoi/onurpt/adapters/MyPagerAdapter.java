@@ -1,8 +1,14 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.eon.atoi.onurpt.fragments.CalendarFragment;
+import com.eon.atoi.onurpt.fragments.ContactFragment;
+import com.eon.atoi.onurpt.fragments.FaqFragment;
+import com.eon.atoi.onurpt.fragments.ProfileFragment;
+import com.eon.atoi.onurpt.fragments.WorkoutListFragment;
 
 /**
  * Created by Atoi on 2.12.2017.

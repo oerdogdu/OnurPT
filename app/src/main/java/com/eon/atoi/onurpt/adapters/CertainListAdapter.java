@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.POJOs.Workout;
+import com.eon.atoi.onurpt.utils.WorkoutDatabaseHelper;
 
 import java.util.List;
 

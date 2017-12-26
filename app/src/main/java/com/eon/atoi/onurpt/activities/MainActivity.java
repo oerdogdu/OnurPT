@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.activities;
 
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.adapters.MyPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

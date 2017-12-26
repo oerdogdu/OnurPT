@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,10 +10,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.POJOs.Workout;
+import com.eon.atoi.onurpt.adapters.ProgramListAdapter;
+import com.eon.atoi.onurpt.utils.WorkoutDatabaseHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Atoi on 7.12.2017.

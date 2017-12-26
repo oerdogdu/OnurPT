@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.eon.atoi.onurpt.POJOs.Workout;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Atoi on 7.12.2017.

@@ -1,22 +1,19 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.fragments;
 
-import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.text.Spanned;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.eon.atoi.onurpt.R;
 import com.eon.atoi.onurpt.utils.XmlFaqUtils;
 
 import java.util.ArrayList;

@@ -27,18 +27,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
         </activity>
 
-        <activity android:name=".CertainExerciseActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".activities.CertainExerciseActivity"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
 
-        <activity android:name=".ProgramActivity">
+        <activity android:name=".activities.ProgramActivity">
         </activity>
 
         <activity
-            android:name=".WorkoutDetailActivity"
+            android:name=".activities.WorkoutDetailActivity"
             android:theme="@style/StyledIndicators" >
         </activity>
 

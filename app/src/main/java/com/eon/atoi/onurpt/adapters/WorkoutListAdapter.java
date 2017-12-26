@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.eon.atoi.onurpt.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

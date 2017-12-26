@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vansuita.materialabout.builder.AboutBuilder;
-import com.vansuita.materialabout.views.AboutView;
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.activities.ProgramActivity;
 
 /**
  * Created by Atoi on 2.12.2017.

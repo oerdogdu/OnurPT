@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.eon.atoi.onurpt.MainActivity;
+import com.eon.atoi.onurpt.activities.MainActivity;
 import com.eon.atoi.onurpt.R;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;

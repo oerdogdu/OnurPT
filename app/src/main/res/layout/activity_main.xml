@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eon.atoi.onurpt.MainActivity"
+    tools:context="com.eon.atoi.onurpt.activities.MainActivity"
     android:background="@color/colorPrimaryDark">
 
     <android.support.v4.view.ViewPager

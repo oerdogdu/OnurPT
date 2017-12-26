@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.activities;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -12,6 +12,10 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.POJOs.Workout;
+import com.eon.atoi.onurpt.adapters.CertainListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

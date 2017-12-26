@@ -1,4 +1,4 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.POJOs;
 
 /**
  * Created by Atoi on 4.12.2017.

@@ -1,8 +1,7 @@
-package com.eon.atoi.onurpt;
+package com.eon.atoi.onurpt.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.POJOs.Workout;
+
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by Atoi on 7.12.2017.
