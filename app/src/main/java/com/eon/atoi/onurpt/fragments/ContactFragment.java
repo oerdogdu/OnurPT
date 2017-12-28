@@ -19,24 +19,15 @@ import com.eon.atoi.onurpt.R;
 
 @SuppressWarnings("deprecation")
 public class ContactFragment extends Fragment {
-    private String title;
-    private int page;
-
-    public static ContactFragment newInstance(int page, String title)
+    public static ContactFragment newInstance()
     {
         ContactFragment contactFragment = new ContactFragment();
-        Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        contactFragment.setArguments(args);
         return contactFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
     }
 
     @Override

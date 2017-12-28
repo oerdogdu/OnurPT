@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.activities.PhotosActivity;
 import com.eon.atoi.onurpt.activities.ProgramActivity;
 
 /**
@@ -17,24 +18,15 @@ import com.eon.atoi.onurpt.activities.ProgramActivity;
 
 public class ProfileFragment extends Fragment {
 
-    private String title;
-    private int page;
-
-    public static ProfileFragment newInstance(int page, String title)
+    public static ProfileFragment newInstance()
     {
         ProfileFragment profileFragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        profileFragment.setArguments(args);
         return profileFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
     }
 
     @Override
@@ -42,10 +34,20 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         TextView programTv = (TextView)view.findViewById(R.id.programTv);
+
         programTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ProgramActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView photosTv = (TextView)view.findViewById(R.id.profile_photos);
+        photosTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PhotosActivity.class);
                 startActivity(intent);
             }
         });

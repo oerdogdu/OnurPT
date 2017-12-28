@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="28dp"
+    android:id="@+id/horizontalScrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.eon.atoi.onurpt.activities.MainActivity">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/mainbackground"
+            android:scaleType="fitXY"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/buttonWorkout"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="282dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/gymbackground"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/buttonFood"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="32dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/food_bg"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/buttonAppointment"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/buttonFAQ"
+            android:layout_marginStart="80dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/appointment_bg"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/buttonFAQ"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="220dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/main_bg_dark"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+    </RelativeLayout>
+</HorizontalScrollView>

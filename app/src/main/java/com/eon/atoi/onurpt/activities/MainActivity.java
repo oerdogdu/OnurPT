@@ -1,37 +1,62 @@
 package com.eon.atoi.onurpt.activities;
 
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.eon.atoi.onurpt.R;
-import com.eon.atoi.onurpt.adapters.MyPagerAdapter;
+import com.eon.atoi.onurpt.fragments.ContactFragment;
+import com.eon.atoi.onurpt.fragments.MainFragment;
+import com.eon.atoi.onurpt.fragments.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
-    FragmentPagerAdapter adapterViewPager;
-
+    private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
-        adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
-        vpPager.setAdapter(adapterViewPager);
-        vpPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void transformPage(View page, float position) {
-                final float normalizedposition = Math.abs(Math.abs(position) - 1);
-                page.setScaleX(normalizedposition / 2 + 0.5f);
-                page.setScaleY(normalizedposition / 2 + 0.5f);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_main:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.details_fragment, MainFragment.newInstance(), "mainFragment")
+                                .commit();
+                        break;
+
+                    case R.id.me:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.details_fragment, ProfileFragment.newInstance(), "profileFragment")
+                                .commit();
+                        break;
+
+                    case R.id.contact:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.details_fragment, ContactFragment.newInstance(), "contactFragment")
+                                .commit();
+                        break;
+                }
+                return true;
             }
         });
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.details_fragment, MainFragment.newInstance(), "mainFragment")
+                .commit();
     }
 }

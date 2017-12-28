@@ -4,6 +4,10 @@
     package="com.eon.atoi.onurpt">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
 
         <meta-data android:name="com.facebook.accountkit.ApplicationName"
             android:value="@string/app_name" />
@@ -30,11 +44,26 @@
         <activity android:name=".activities.MainActivity">
         </activity>
 
+        <activity android:name=".activities.FaqActivity">
+        </activity>
+
+        <activity android:name=".activities.FoodActivity">
+        </activity>
+
+        <activity android:name=".activities.CalendarActivity">
+        </activity>
+
+        <activity android:name=".activities.WorkoutListActivity">
+        </activity>
+
         <activity android:name=".activities.CertainExerciseActivity"
             android:parentActivityName=".activities.MainActivity">
         </activity>
 
         <activity android:name=".activities.ProgramActivity">
+        </activity>
+
+        <activity android:name=".activities.PhotosActivity">
         </activity>
 
         <activity

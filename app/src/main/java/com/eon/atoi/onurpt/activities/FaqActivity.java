@@ -1,13 +1,11 @@
-package com.eon.atoi.onurpt.fragments;
+package com.eon.atoi.onurpt.activities;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Spanned;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -23,7 +21,7 @@ import java.util.Arrays;
  * Created by Atoi on 6.12.2017.
  */
 
-public class FaqFragment extends Fragment {
+public class FaqActivity extends Activity {
     private String title;
     private int page;
     private ArrayList<XmlFaqUtils.FAQ> list;
@@ -31,29 +29,13 @@ public class FaqFragment extends Fragment {
     private ArrayList<String> answerList = new ArrayList<>();
     private AutoCompleteTextView autoCompleteTextView;
 
-    public static FaqFragment newInstance(int page, String title)
-    {
-        FaqFragment faqFragment = new FaqFragment();
-        Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        faqFragment.setArguments(args);
-        return faqFragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
-    }
+        setContentView(R.layout.faq_activity);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.faq_fragment, container, false);
-        autoCompleteTextView = (AutoCompleteTextView)view.findViewById(R.id.autocompleteQuestion);
-        final TextView tvAnswer = (TextView)view.findViewById(R.id.faq_answer);
+        autoCompleteTextView = (AutoCompleteTextView)findViewById(R.id.autocompleteQuestion);
+        final TextView tvAnswer = (TextView)findViewById(R.id.faq_answer);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -65,7 +47,7 @@ public class FaqFragment extends Fragment {
         new AsyncTask<Spanned[], Void, XmlFaqUtils.FAQ[]>() {
             @Override
             public XmlFaqUtils.FAQ[] doInBackground(Spanned[]... params) {
-                return XmlFaqUtils.parse(getActivity());
+                return XmlFaqUtils.parse(getBaseContext());
             }
 
             @Override
@@ -76,7 +58,6 @@ public class FaqFragment extends Fragment {
             }
         }.execute();
 
-        return view;
     }
 
     private void fetchData(ArrayList<XmlFaqUtils.FAQ> list) {
@@ -92,7 +73,7 @@ public class FaqFragment extends Fragment {
             answerList.add(answer);
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.select_dialog_item, questionList);
 
         autoCompleteTextView.setThreshold(1);

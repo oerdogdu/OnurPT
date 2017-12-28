@@ -44,7 +44,8 @@ public class PhoneRegister extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSMSLoginFlow(v);
+                goToMyLoggedInActivity();
+                //onSMSLoginFlow(v);
             }
         });
     }

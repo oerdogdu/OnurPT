@@ -1,5 +1,6 @@
-package com.eon.atoi.onurpt.fragments;
+package com.eon.atoi.onurpt.activities;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -8,12 +9,8 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
@@ -31,7 +28,7 @@ import java.util.List;
  * Created by Atoi on 4.12.2017.
  */
 
-public class CalendarFragment extends Fragment {
+public class CalendarActivity extends Activity {
     private String title;
     private int page;
     private static final DateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -42,38 +39,17 @@ public class CalendarFragment extends Fragment {
     Calendar calendar = Calendar.getInstance();
     WeekViewEvent event;
 
-    public static CalendarFragment newInstance(int page, String title)
-    {
-        CalendarFragment calendarFragment = new CalendarFragment();
-        Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        calendarFragment.setArguments(args);
-        return calendarFragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someInt", 0);
-        title = getArguments().getString("someTitle");
-    }
+        setContentView(R.layout.calendar_activity);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.calendar_fragment, container, false);
-        weekView = (WeekView) view.findViewById(R.id.weekView);
+        weekView = (WeekView)findViewById(R.id.weekView);
         weekView.setMonthChangeListener(mMonthChangeListener);
         weekView.setEmptyViewLongPressListener(new WeekView.EmptyViewLongPressListener() {
             @Override
             public void onEmptyViewLongPress(Calendar time) {
-                DialogFragment newFragment = MyAlertDialogFragment
-                        .newInstance(R.string.appointmentStr);
-                timeString = new SimpleDateFormat("HH:mm").format(time.getTime());
 
-                calendar = (Calendar) time.clone();
-                newFragment.show(getFragmentManager(), "dialog");
             }
         });
 
@@ -81,14 +57,10 @@ public class CalendarFragment extends Fragment {
         WeekView.EventClickListener mEventClickListener = new WeekView.EventClickListener() {
             @Override
             public void onEventClick(final WeekViewEvent event, RectF eventRect) {
-                getActivity().runOnUiThread(new Runnable() {
+                CalendarActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        DialogFragment newFragment = MyAlertDialogFragment
-                                .newInstance(R.string.eventStr);
-                        newFragment.show(getFragmentManager(), "Event");
-                        event.setColor(Color.GREEN);
-                        weekView.notifyDatasetChanged();
+
                     }
                 });
             }
@@ -96,7 +68,7 @@ public class CalendarFragment extends Fragment {
 
         weekView.setOnEventClickListener(mEventClickListener);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             Calendar startTime = calendar.getInstance();
             startTime.set(Calendar.HOUR_OF_DAY, 3);
@@ -114,7 +86,6 @@ public class CalendarFragment extends Fragment {
             editor.commit();
         }
 
-        return view;
     }
 
     protected String getEventTitle(Calendar time) {
@@ -193,7 +164,7 @@ public class CalendarFragment extends Fragment {
 
         event.setColor(Color.BLUE);
         events.add(event);
-        getActivity().runOnUiThread(new Runnable() {
+        this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 weekView.notifyDatasetChanged();
