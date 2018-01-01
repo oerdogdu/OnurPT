@@ -74,13 +74,8 @@ public class CertainListAdapter extends RecyclerView.Adapter<CertainListAdapter.
                         workoutProgram.setReps(reps);
                         WorkoutDatabaseHelper workoutDatabaseHelper = WorkoutDatabaseHelper.getInstance(mContext);
                         workoutDatabaseHelper.addWorkout(workoutProgram);
-                        //Toast.makeText(mContext, "Workout Added", Toast.LENGTH_SHORT);
-
-
-                        List<Workout> w = workoutDatabaseHelper.getAllWorkouts();
-                        for (Workout workout : w) {
-                            Log.d("elements", workout.getWorkoutName());
-                        }
+                        Toast.makeText(mContext, "Workout Added", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                     else {
                         Log.d("nullcheck", "null");

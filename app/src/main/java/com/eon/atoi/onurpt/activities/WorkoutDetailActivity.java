@@ -1,8 +1,10 @@
 package com.eon.atoi.onurpt.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,8 +12,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.Toast;
 
 import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.utils.WorkoutDatabaseHelper;
 
 import devadvance.circularseekbar.CircularSeekBar;
 
@@ -29,13 +33,19 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private Button btnStart, btnPause, btnBreak,
                     btnDone;
     long timeWhenStopped = 0;
-
+    private String workoutName;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.workout_detail);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+        {
+                workoutName = bundle.getString("workoutName");
+        }
 
         mChronometer = (Chronometer)findViewById(R.id.chronometer2);
         mChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
@@ -96,7 +106,26 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(WorkoutDetailActivity.this,
+                        android.R.style.Theme_Material_Dialog_Alert);
+                alertDialog.setTitle("Exercise Done!")
+                .setMessage("Are you sure you are done?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        WorkoutDatabaseHelper workoutDatabaseHelper = WorkoutDatabaseHelper.getInstance(WorkoutDetailActivity.this);
+                        workoutDatabaseHelper.deleteWorkout(workoutName);
+                        finish();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setIcon(R.drawable.chest_icon)
+                .show();
             }
         });
     }

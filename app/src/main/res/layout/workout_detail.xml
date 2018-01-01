@@ -6,21 +6,109 @@
     xmlns:custom="http://schemas.android.com/tools"
     android:background="@color/colorPrimary">
 
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#808080"
+        android:layout_marginTop="32dp"
+        android:weightSum="5">
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_repeat_white_24dp"
+            android:background="@null"/>
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_fast_forward_white_24dp"
+            android:background="@null"/>
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_play_circle_filled_white_24dp"
+            android:background="@null"/>
+
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_fast_forward_white_24dp"
+            android:background="@null"/>
+
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_shuffle_white_24dp"
+            android:background="@null"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="@id/ll_bottom"
+        android:layout_margin="16dp">
+        <TextView
+            android:id="@+id/tv_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="2:01"
+            android:textSize="14sp"
+            android:textColor="#FFF"/>
+        <TextView
+            android:id="@+id/tv_full_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="3:47"
+            android:textSize="14sp"
+            android:textColor="#FFF" />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_toLeftOf="@id/tv_full_time"
+            android:layout_toRightOf="@id/tv_current_time"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_centerVertical="true"
+            android:progressBackgroundTint="#E9E9E9"
+            android:progress="50"
+            android:indeterminate="false"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/progress_bar"/>
+    </RelativeLayout>
+
     <devadvance.circularseekbar.CircularSeekBar
         android:id="@+id/circularSeekBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:circle_progress_color="#000"
-        app:circle_color="@color/colorPrimaryDark"/>
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignTop="@+id/chronometer3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        app:circle_color="@color/colorPrimaryDark"
+        app:circle_progress_color="#FFF" />
 
     <Chronometer
         android:id="@+id/chronometer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="157dp"
+        android:layout_alignStart="@+id/chronometer3"
+        android:layout_below="@+id/chronometer3"
+        android:layout_marginTop="19dp"
         android:text="00:00"
         android:textSize="63sp" />
 
@@ -35,6 +123,9 @@
         android:layout_marginTop="157dp"
         android:text="00:00"
         android:textSize="63sp" />
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

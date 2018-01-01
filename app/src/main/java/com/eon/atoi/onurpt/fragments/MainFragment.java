@@ -15,6 +15,7 @@ import com.eon.atoi.onurpt.R;
 import com.eon.atoi.onurpt.activities.CalendarActivity;
 import com.eon.atoi.onurpt.activities.FaqActivity;
 import com.eon.atoi.onurpt.activities.FoodActivity;
+import com.eon.atoi.onurpt.activities.MusicActivity;
 import com.eon.atoi.onurpt.activities.WorkoutListActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -40,12 +41,14 @@ public class MainFragment extends Fragment
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        CircleImageView buttonAppointment, buttonFood, buttonWorkout, buttonFAQ;
+        CircleImageView buttonAppointment, buttonFood, buttonWorkout, buttonFAQ,
+                    buttonMusic;
 
         buttonAppointment = (CircleImageView)view.findViewById(R.id.buttonAppointment);
         buttonFood = (CircleImageView)view.findViewById(R.id.buttonFood);
         buttonWorkout = (CircleImageView)view.findViewById(R.id.buttonWorkout);
         buttonFAQ = (CircleImageView)view.findViewById(R.id.buttonFAQ);
+        buttonMusic = (CircleImageView)view.findViewById(R.id.buttonMusic);
 
         buttonFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,14 @@ public class MainFragment extends Fragment
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FaqActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MusicActivity.class);
                 startActivity(intent);
             }
         });

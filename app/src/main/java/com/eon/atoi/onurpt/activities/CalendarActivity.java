@@ -15,7 +15,9 @@ import android.util.Log;
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.eon.atoi.onurpt.POJOs.Event;
 import com.eon.atoi.onurpt.R;
+import com.eon.atoi.onurpt.utils.WorkoutDatabaseHelper;
 
 
 import java.text.DateFormat;
@@ -44,7 +46,7 @@ public class CalendarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
 
-        weekView = (WeekView)findViewById(R.id.weekView);
+        weekView = (WeekView) findViewById(R.id.weekView);
         weekView.setMonthChangeListener(mMonthChangeListener);
         weekView.setEmptyViewLongPressListener(new WeekView.EmptyViewLongPressListener() {
             @Override
@@ -52,7 +54,6 @@ public class CalendarActivity extends Activity {
 
             }
         });
-
 
         WeekView.EventClickListener mEventClickListener = new WeekView.EventClickListener() {
             @Override
@@ -68,8 +69,99 @@ public class CalendarActivity extends Activity {
 
         weekView.setOnEventClickListener(mEventClickListener);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!prefs.getBoolean("firstTime", false)) {
+    }
+
+    protected String getEventTitle(Calendar time) {
+        return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH) + 1, time.get(Calendar.DAY_OF_MONTH));
+    }
+
+    MonthLoader.MonthChangeListener mMonthChangeListener = new MonthLoader.MonthChangeListener() {
+        @Override
+        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+
+            /*Calendar mainCalendar = Calendar.getInstance();
+            if (newMonth == mainCalendar.get(Calendar.MONTH))
+                return events;
+            else {
+                return new ArrayList<WeekViewEvent>();
+            }
+        }*/
+            WorkoutDatabaseHelper workoutDatabaseHelper = WorkoutDatabaseHelper.getInstance(CalendarActivity.this);
+            ArrayList<Event> eventList = new ArrayList();
+            eventList = workoutDatabaseHelper.getAllEvents();
+            for (Event event : eventList) {
+                Calendar now = Calendar.getInstance();
+                Calendar startTime = (Calendar) now.clone();
+                String[] temp = event.getmStartTime().split(":");
+                Log.d("time", event.getmStartTime());
+                startTime.set(Calendar.DAY_OF_MONTH, 1);
+                startTime.set(Calendar.MONTH, newMonth-1);
+                startTime.set(Calendar.YEAR, newYear);
+                startTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(temp[0]));
+                startTime.set(Calendar.MINUTE, 0);
+                Calendar endTime = (Calendar) startTime.clone();
+                endTime.set(Calendar.HOUR_OF_DAY, startTime.get(Calendar.HOUR) + 1);
+
+                WeekViewEvent weekViewEvent = new WeekViewEvent(1, event.getmName(), startTime, endTime);
+
+                events.add(weekViewEvent);
+                weekView.notifyDatasetChanged();
+
+            }
+            return events;
+        }
+
+        ;
+
+        private boolean eventMatch(WeekViewEvent matchEvent) {
+            if (matchEvent.getId() == event.getId())
+                return true;
+            return false;
+        }
+
+        private boolean eventMatches(WeekViewEvent event, int year, int month) {
+            return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month) ||
+                    (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month);
+        }
+
+    };
+        public static class MyAlertDialogFragment extends DialogFragment {
+
+            public static MyAlertDialogFragment newInstance(int title) {
+                MyAlertDialogFragment frag = new MyAlertDialogFragment();
+                Bundle args = new Bundle();
+                args.putInt("title", title);
+                frag.setArguments(args);
+                return frag;
+            }
+
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                int title = getArguments().getInt("title");
+
+                return new AlertDialog.Builder(getActivity())
+                        .setIcon(R.drawable.ic_mr_button_connected_01_light)
+                        .setTitle(title)
+                        .setMessage(timeString)
+                        .setPositiveButton(R.string.OK,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int whichButton) {
+
+                                    }
+                                })
+                        .setNegativeButton(R.string.Cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int whichButton) {
+
+                                    }
+                                }).show();
+            }
+        }
+
+
+        public void doPositiveClick() {
             Calendar startTime = calendar.getInstance();
             startTime.set(Calendar.HOUR_OF_DAY, 3);
             startTime.set(Calendar.MINUTE, 0);
@@ -77,104 +169,16 @@ public class CalendarActivity extends Activity {
             endTime.set(Calendar.HOUR_OF_DAY, 4);
             endTime.set(Calendar.MINUTE, 0);
 
-            event = new WeekViewEvent(0, "Workout", startTime, endTime);
-            event.setColor(Color.RED);
+            WeekViewEvent event = new WeekViewEvent(0, "Epoca", startTime, endTime);
+
+            event.setColor(Color.BLUE);
             events.add(event);
-
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("firstTime", true);
-            editor.commit();
         }
 
-    }
-
-    protected String getEventTitle(Calendar time) {
-        return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH)+1, time.get(Calendar.DAY_OF_MONTH));
-    }
-
-    MonthLoader.MonthChangeListener mMonthChangeListener = new MonthLoader.MonthChangeListener() {
-        @Override
-        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-
-            Calendar mainCalendar = Calendar.getInstance();
-            if (newMonth == mainCalendar.get(Calendar.MONTH))
-                return events;
-            else {
-                return new ArrayList<WeekViewEvent>();
-            }
+        public void doNegativeClick() {
+            // Do stuff here.
+            Log.i("FragmentAlertDialog", "Negative click!");
         }
+
     };
 
-    private boolean eventMatch(WeekViewEvent matchEvent) {
-        if(matchEvent.getId() == event.getId())
-            return true;
-        return false;
-    }
-
-    private boolean eventMatches(WeekViewEvent event, int year, int month) {
-        return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month) ||
-                (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month);
-    }
-
-    public static class MyAlertDialogFragment extends DialogFragment {
-
-        public static MyAlertDialogFragment newInstance(int title) {
-            MyAlertDialogFragment frag = new MyAlertDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("title", title);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            int title = getArguments().getInt("title");
-
-            return new AlertDialog.Builder(getActivity())
-                    .setIcon(R.drawable.ic_mr_button_connected_01_light)
-                    .setTitle(title)
-                    .setMessage(timeString)
-                    .setPositiveButton(R.string.OK,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                                    int whichButton) {
-
-                                }
-                            })
-                    .setNegativeButton(R.string.Cancel,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                                    int whichButton) {
-
-                                }
-                            }).show();
-        }
-    }
-
-
-    public void doPositiveClick() {
-        Calendar startTime = calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        Calendar endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR_OF_DAY, 4);
-        endTime.set(Calendar.MINUTE, 0);
-
-        WeekViewEvent event = new WeekViewEvent(0, "Epoca", startTime, endTime);
-
-        event.setColor(Color.BLUE);
-        events.add(event);
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                weekView.notifyDatasetChanged();
-            }
-        });
-    }
-
-    public void doNegativeClick() {
-        // Do stuff here.
-        Log.i("FragmentAlertDialog", "Negative click!");
-    }
-
-}
