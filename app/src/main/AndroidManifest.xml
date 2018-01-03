@@ -52,10 +52,7 @@
         <activity android:name=".login.PhoneRegister">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <data
-                    android:host="callback"
-                    android:scheme="onurpt" />
+                <category android:name="android.intent.category.LAUNCHER" />/>
             </intent-filter>
         </activity>
 

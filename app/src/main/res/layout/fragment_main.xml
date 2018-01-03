@@ -73,10 +73,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/buttonMusic"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="480dp"
-            android:layout_marginTop="220dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="380dp"
+            android:layout_marginTop="420dp"
             android:paddingTop="20dp"
             android:src="@drawable/music_bg"
             app:civ_border_color="#FF000000"

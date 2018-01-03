@@ -36,17 +36,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:id="@+id/buttonRepeat"
         android:src="@drawable/ic_repeat_white_24dp"
         android:background="@null"/>
     <ImageButton
         android:layout_weight="1"
         android:layout_width="match_parent"
+        android:id="@+id/fastForward"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_fast_forward_white_24dp"
         android:background="@null"/>
+
     <ImageButton
         android:layout_weight="1"
+        android:id="@+id/playButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -55,7 +59,18 @@
 
     <ImageButton
         android:layout_weight="1"
+        android:id="@+id/stopButton"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:src="@drawable/ic_stop_white_24dp"
+        android:background="@null"/>
+
+    <ImageButton
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:id="@+id/fastBackward"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_fast_forward_white_24dp"
@@ -66,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:id="@+id/buttonShuffle"
         android:src="@drawable/ic_shuffle_white_24dp"
         android:background="@null"/>
 </LinearLayout>
@@ -115,9 +131,10 @@ android:layout_margin="16dp">
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabMusicLocal"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="108dp"
+            android:layout_marginStart="80dp"
             android:src="@drawable/music_bg" />
 
         <android.support.design.widget.FloatingActionButton
